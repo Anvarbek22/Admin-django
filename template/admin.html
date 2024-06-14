@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static "admin/style.css" %}">
+</head>
+<body>
+    <section id="close"> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> 
+    </section>
+    <div class="nav-setting">
+        <center><h1>Welcome to admin panel</h1></center>
+    </div>
+    <div style="display: block;" class="home-setting" id="home">
+        <div class="mahsulot-setting">
+            <h1>mahsulot</h1>
+            <button id="m-q" style="position:absolute; top:15px; right: 0px; width:200px; height:30px" type="button">Mahsulot kiritish</button>
+            <table>
+                <tr>
+                  <th>Nomi</th>
+                  <th>Narxi</th>
+                </tr>
+                {% for i in data %}
+                  <tr>
+                    <td>{{i.name}}</td>
+                    <td>{{i.narx}}$</td>
+                  </tr>
+                {% endfor %}
+              </table>
+        </div>
+        <div class="status-setting">
+            <h1>status</h1>
+            {% for i in data2 %}
+                <h3>{{i.0}}</h3>
+                <progress value="0" max="100" style="--value: {{i.2}}; --max: 100;"></progress>
+                <button id="{{i.0}}" style="position:absolute; top: {{i.3}}px; right: 0px; width:80px; height:30px" type="button">init</button>
+            {% endfor %}
+        </div>
+        <div class="client-setting">
+            <h1>client</h1>
+        </div>
+    </div>
+    <div>
+        <form method="POST">
+            {% csrf_token %}
+            {{form}}
+        </form>
+    </div>
+    <div id="add" class="add-item" style="display: none; background-color: white;">
+        <form method="POST">
+            {% csrf_token %}
+            <h3>Nomi</h3><br>
+            <input type="text" name="name"><br>
+            <h3>Narxi</h3><br>
+            <input type="text" name="narx"><br>
+            <h3>Donasi</h3><br>
+            <input type="text" name="donasi"><br>
+            <h3>Malumot</h3><br>
+            <input type="text" name="dest"><br>
+            <h3>Rasmi</h3><br>
+            <input type="text" id="myfile" name="img"><br><br>
+            <input type="submit" value="yuborish">
+        </form>
+    </div>
+
+    <script>
+        function replace_text(name){
+
+        }
+        var add_item=document.getElementById("add")
+        var home=document.getElementById("home")
+        document.getElementById("m-q").onclick = function(){
+            home.style.display = "none";
+            add_item.style.display = "block";
+        }
+    </script>
+</body>
+</html>

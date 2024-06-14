@@ -1,0 +1,252 @@
+
+.mahsulot-setting
+{
+    left: 0px;
+    position:absolute;    
+    background: #fff;
+}
+
+.status-setting
+{
+    right: 33.5%;
+    position:absolute;
+    background: #fff;
+}
+
+.client-setting
+{
+    right: 0%;
+    position:absolute;
+    background: #fff;
+}
+
+.mahsulot-setting, .client-setting, .status-setting
+{
+    top: 0px;
+    width: 33%;
+    height: 100%;
+}
+
+.home-setting,.add-item
+{
+    z-index: 1000;
+    padding: 2px;
+    bottom: 10px;
+    top: 79px;
+    position: absolute;   
+    right: 10px;
+    left: 10px;
+    margin: 10 10 10 10;
+}
+
+.home-setting
+{
+    background: rgb(94, 94, 94);  
+     
+    
+}
+
+.nav-setting 
+{
+    position: absolute;
+    right: 10px;
+    left: 10px;
+    top: 10px;
+    height: 64px;
+    position: absolute;
+    background: rgb(94, 94, 94);  
+    z-index: 1000;
+    padding: 2px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@property --progress-value {
+syntax: '<integer>';
+inherits: true;
+initial-value: 0;
+}
+
+:root {
+--progress-bar-color: #cfd8dc;
+--progress-value-color: #2196f3;
+--progress-empty-color-h: 4.1;
+--progress-empty-color-s: 89.6;
+--progress-empty-color-l: 58.4;
+--progress-filled-color-h: 122.4;
+--progress-filled-color-s: 39.4;
+--progress-filled-color-l: 49.2;
+}
+
+
+
+progress[value] {
+display: block;
+position: relative;
+appearance: none;
+width: 80%;
+height: 6px;
+border: 0;
+--border-radius: 10px;
+border-radius: var(--border-radius);
+counter-reset: progress var(--progress-value);
+--progress-value-string: counter(progress) '%';
+--progress-max-decimal: calc(var(--value, 0) / var(--max, 0));
+--progress-value-decimal: calc(var(--progress-value, 0) / var(--max, 0));
+@supports selector(::-moz-progress-bar) {
+    --progress-value-decimal: calc(var(--value, 0) / var(--max, 0));
+}
+--progress-value-percent: calc(var(--progress-value-decimal) * 100%);
+--progress-value-color: hsl(
+    calc((var(--progress-empty-color-h) + (var(--progress-filled-color-h) - var(--progress-empty-color-h)) * var(--progress-value-decimal)) * 1deg)
+    calc((var(--progress-empty-color-s) + (var(--progress-filled-color-s) - var(--progress-empty-color-s)) * var(--progress-value-decimal)) * 1%)
+    calc((var(--progress-empty-color-l) + (var(--progress-filled-color-l) - var(--progress-empty-color-l)) * var(--progress-value-decimal)) * 1%)
+);
+animation: calc(3s * var(--progress-max-decimal)) linear 0.5s 1 normal both progress;
+}
+
+progress[value]::-webkit-progress-bar {
+background-color: var(--progress-bar-color);
+border-radius: var(--border-radius);
+overflow: hidden;
+}
+
+progress[value]::-webkit-progress-value {
+width: var(--progress-value-percent) !important;
+background-color: var(--progress-value-color);
+border-radius: var(--border-radius);
+}
+
+progress[value]::-moz-progress-bar {
+width: var(--progress-value-percent) !important;
+background-color: var(--progress-value-color);
+border-radius: var(--border-radius);
+}
+
+progress[value]::after {
+display: flex;
+align-items: center;
+justify-content: center;
+--size: 32px;
+width: var(--size);
+height: var(--size);
+position: absolute;
+left: var(--progress-value-percent);
+top: 50%;
+transform: translate(-50%, -50%);
+background-color: var(--progress-value-color);
+border-radius: 50%;
+content: attr(value);
+content: var(--progress-value-string, var(--value));
+font-size: 12px;
+font-weight: 700;
+color: #fff;
+}
+
+@keyframes progress {
+    from {
+        --progress-value: 0;
+    } to {
+        --progress-value: var(--value);
+    }
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+*
+{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: 'Quicksand', sans-serif;
+}
+body 
+{
+min-height: 100vh;
+background: #000;
+}
+section 
+{
+position: absolute;
+width: 100vw;
+height: 100vh;
+display: flex;
+gap: 2px;
+flex-wrap: wrap;
+overflow: hidden;
+}
+section::before 
+{
+content: '';
+position: absolute;
+width: 100%;
+height: 100%;
+background: linear-gradient(#000,#0f0,#000);
+animation: animate 5s linear infinite;
+}
+@keyframes animate 
+{
+0%
+{
+    transform: translateY(-100%);
+}
+100%
+{
+    transform: translateY(100%);
+}
+}
+section span 
+{
+  position: relative;
+display: block;
+width: calc(6.25vw - 2px);
+height: calc(6.25vw - 2px);
+background: #181818;
+z-index: 2;
+transition: 1.5s;
+}
+table {
+font-family: arial, sans-serif;
+border-collapse: collapse;
+width: 100%;
+}
+
+td, th {
+border: 1px solid #dddddd;
+text-align: left;
+padding: 8px;
+}
+
+tr:nth-child(even) {
+background-color: #dddddd;
+}
